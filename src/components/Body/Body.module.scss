@@ -1,0 +1,28 @@
+.container {
+    // border: solid orange;
+    background-color: var(--Magnolia);
+    padding: 0 1em 3em;
+    .content {
+        // border: solid 1px var(--LightGray);
+        // & > * {border: solid darkcyan;}
+        border-radius: 10px;
+        background-color: var(--White);
+        padding: 1.5em;
+        position: relative;
+        top: -10vh;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        box-shadow: 0 2px 5px -3px var(--CoolGray);
+        .title {
+            color: var(--MarineBlue);
+        }
+        .subtitle {
+            color: var(--CoolGray);
+            font-size: 1.1rem;
+            margin-bottom: 0.7em;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+    }
+}

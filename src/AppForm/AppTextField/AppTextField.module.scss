@@ -1,0 +1,34 @@
+.container {
+    // border: solid;
+    display: flex;
+    flex-direction: column;
+    // & > * {border: solid green;}
+    padding-bottom: 0.8em;
+    label {
+        font-size: 0.8rem;
+        color: var(--MarineBlue);
+        padding-bottom: 0.3em;
+    }
+    input {
+        padding: 0.9em;
+        border: solid 1px var(--LightGray);
+        border-radius: 5px;
+        color: var(--MarineBlue);
+        font-size: 1rem;
+        font-weight: 500;
+        &::placeholder {
+            font-weight: 700;
+            color: var(--CoolGray);
+            font-size: 1rem;
+        }
+        &:focus {
+            outline-color: var(--PastelBlue);
+        }
+    }
+    .errorMessage {
+        font-size: 0.8rem;
+        margin-top: 0.2em;
+        color: red;
+        visibility: hidden;
+    }
+}

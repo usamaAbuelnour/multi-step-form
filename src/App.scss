@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+:root {
+    // Primary
+
+    --MarineBlue: hsl(213, 96%, 18%);
+    --PurplishBlue: hsl(243, 100%, 62%);
+    --PastelBlue: hsl(228, 100%, 84%);
+    --LightBlue: hsl(206, 94%, 87%);
+    --StrawberryRed: hsl(354, 84%, 57%);
+
+    // Neutral
+
+    --CoolGray: hsl(231, 11%, 63%);
+    --LightGray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+html {
+    font-size: 16px;
+}
+
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
