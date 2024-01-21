@@ -33,7 +33,7 @@ function App() {
             currentStage={currentStage}
             setCurrentStage={setCurrentStage}
         >
-            <AppForm />
+            <AppForm currentStage={currentStage} />
         </Layout>
     );
 }
