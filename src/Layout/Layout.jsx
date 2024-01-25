@@ -1,14 +1,28 @@
 import classes from "./Layout.module.scss";
 import headerMobile from "../assets/bg-sidebar-mobile.svg";
 import Body from "../components/Body/Body";
-
 const Layout = ({
     children,
     title,
     subtitle,
     currentStage,
     setCurrentStage,
+    errors,
+    formValues,
+    fieldTouched
 }) => {
+    // console.log(errors)
+
+    const isFormEmpty = () => {
+        let values = "";
+        for (const key in formValues) {
+            values = values + formValues[key];
+            if(!formValues[key]) fieldTouched(key, true)
+        }
+        if (!values) return true;
+        else return false;
+    };
+
     return (
         <div className={classes.container}>
             <header className={classes.header}>
@@ -43,20 +57,33 @@ const Layout = ({
                         Go Back
                     </button>
                 )}
-                <button
-                    className={[
-                        classes.button,
-                        classes.next,
-                        currentStage === 3 && classes.confirm,
-                    ].join(" ")}
-                    onClick={
-                        currentStage === 3
-                            ? () => {}
-                            : () => setCurrentStage((prev) => ++prev)
-                    }
-                >
-                    {currentStage === 3 ? "Confirm" : "Next Step"}
-                </button>
+                {currentStage < 3 ? (
+                    <button
+                        className={[classes.button, classes.next].join(" ")}
+                        onClick={() => setCurrentStage((prev) => ++prev)}
+                    >
+                        Next Step
+                    </button>
+                ) : (
+                    // wrap the outter submit to work properly <></>   !!!!!!
+                    <>
+                        <button
+                            className={[
+                                classes.button,
+                                classes.next,
+                                classes.confirm,
+                            ].join(" ")}
+                            type="submit"
+                            form="my-form"
+                            onClick={() => {
+                                if(isFormEmpty() ||errors.name || errors.email || errors.phone) setCurrentStage(0)
+                                else if(errors.plan) setCurrentStage(1)
+                            }}
+                        >
+                            Confirm
+                        </button>
+                    </>
+                )}
             </footer>
         </div>
     );

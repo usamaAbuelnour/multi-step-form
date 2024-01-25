@@ -1,13 +1,26 @@
 import classes from "./PlanItem.module.scss";
 
-const PlanItem = ({ name, cost, icon, setPlan, selected }) => {
-    const styles = [classes.container];
+const PlanItem = ({
+    name,
+    cost,
+    icon,
+    selectedPlan,
+    selectPlanHandler,
+    setFieldValue,
+}) => {
     return (
         <div
-            className={styles.join(" ")}
+            className={[
+                classes.container,
+                selectedPlan.name === name && classes.selected,
+            ].join(" ")}
             onClick={() => {
-                setPlan({ name, cost });
-                styles.push(classes.selected);
+                selectPlanHandler({
+                    name,
+                    type: cost.offer ? "yearly" : "monthly",
+                    cost: cost.price,
+                });
+                setFieldValue("plan", { name, cost });
             }}
         >
             <div className={classes.icon}>

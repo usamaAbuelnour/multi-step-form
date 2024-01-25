@@ -1,0 +1,60 @@
+// border: solid 1px green;
+.container {
+    background-color: var(--Alabaster);
+    border-radius: 10px;
+    padding: 0.7em;
+    .plan {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.7em 0;
+        font-weight: 900;
+        .planInfo {
+            .planName {
+                color: var(--MarineBlue);
+                line-height: 1.5;
+            }
+            .change {
+                color: var(--CoolGray);
+                text-decoration: underline;
+                font-weight: 500;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .planCost {
+            color: var(--MarineBlue);
+        }
+    }
+    .addOn {
+        // border: solid blue;
+        border-top: solid 1px var(--LightGray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.7em 0;
+        .addOnName {
+            color: var(--CoolGray);
+        }
+        .addOnCost {
+            color: var(--MarineBlue);
+        }
+    }
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 0.7em 0;
+    font-weight: 500;
+    .totalLabel {
+        color: var(--CoolGray);
+    }
+    .totalCost {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--PurplishBlue);
+    }
+}
