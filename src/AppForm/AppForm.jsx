@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FieldArray, Form, Formik } from "formik";
 import AppTextField from "./AppTextField/AppTextField";
 import { validationSchema } from "./validationSchema";
@@ -10,6 +10,8 @@ import CustomSwitch from "./CustomSwitch/CustomSwitch";
 
 const AppForm = ({ currentStage }) => {
     const [switchValue, setSwitchValue] = useState("monthly");
+    const switchValueHandler = value => setSwitchValue(value);
+
     const plans = [
         {
             name: "Arcade",
@@ -39,7 +41,7 @@ const AppForm = ({ currentStage }) => {
 
     const personalInfo = (
         <>
-            {" "}
+            
             <AppTextField
                 label="Name"
                 type="text"
@@ -63,9 +65,15 @@ const AppForm = ({ currentStage }) => {
                         ? e.preventDefault()
                         : null
                 }
-            />{" "}
+            />
         </>
     );
+
+    const [selectedPlan, setSelectedPlan] = useState();
+
+    useEffect(()=>console.log(selectedPlan), [selectedPlan])
+
+    const selectPlanHandler = (plan) => setSelectedPlan(plan);
 
     return (
         <Formik
@@ -91,11 +99,13 @@ const AppForm = ({ currentStage }) => {
                                     : plan.cost.yearly
                             }
                             icon={plan.icon}
+                            setPlan={selectPlanHandler}
+                            // selected={selectedPlan}
                         />
                     ))}
                     <CustomSwitch
                         value={switchValue}
-                        setValue={setSwitchValue}
+                        setValue={switchValueHandler}
                     />
                 </Form>
             )}

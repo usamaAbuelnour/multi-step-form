@@ -28,8 +28,12 @@
             font-size: 0.8rem;
         }
     }
-    .selected {
+    &.selected {
         border-color: var(--PurplishBlue);
         background-color: var(--Alabaster);
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 }
