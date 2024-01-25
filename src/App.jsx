@@ -1,7 +1,9 @@
 import "./App.scss";
 import Layout from "./Layout/Layout";
 import AppForm from "./AppForm/AppForm";
-import { useState } from "react";
+import { createContext, useState } from "react";
+
+export const CurrentStage = createContext("");
 
 function App() {
     const titles = [
@@ -25,6 +27,16 @@ function App() {
     ];
 
     const [currentStage, setCurrentStage] = useState(0);
+    const changeCurrentStage = (stage) => setCurrentStage(stage);
+
+    const [errors, setErrors] = useState();
+    const setErrorsHandler = (errors) => setErrors(errors);
+
+    const [formValues, setFormValues] = useState();
+    const setFormValuesHandler = (values) => setFormValues(values);
+
+    const [fieldTouched, setFieldTouched] = useState();
+    const setFieldTouchedHandler = fieldTouched => setFieldTouched(fieldTouched);
 
     return (
         <Layout
@@ -32,8 +44,20 @@ function App() {
             subtitle={titles[currentStage].subtitle}
             currentStage={currentStage}
             setCurrentStage={setCurrentStage}
+            errors={errors}
+            formValues={formValues}
+            fieldTouched={fieldTouched}
         >
-            <AppForm currentStage={currentStage} />
+            <CurrentStage.Provider
+                value={{
+                    changeCurrentStage,
+                    setErrorsHandler,
+                    setFormValuesHandler,
+                    setFieldTouchedHandler
+                }}
+            >
+                <AppForm currentStage={currentStage} />
+            </CurrentStage.Provider>
         </Layout>
     );
 }

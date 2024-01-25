@@ -1,0 +1,16 @@
+.container {
+    border: solid 1px var(--LightGray);
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+    }
+    &.checked {
+        background-color: var(--PurplishBlue);
+        border-color: transparent;
+    }
+}
